@@ -21,7 +21,7 @@ class Simulacion:
             conteo = self.grilla.contar_por_estado() # Cuenta los estados actuales de la grilla
             self.recolector.registrar(paso, conteo)  # Registra el conteo en el recolector de estadísticas
             if mostrar:
-                print("Paso", paso)
+                print("Paso", paso, flush=True)
                 self.grilla.mostrar_consola()  # Muestra la grilla en la consola
             self.grilla.aplicar_reglas() # Aplica las reglas de transición a todas las celdas
             self.grilla.actualizar_estados() # Actualiza los estados de las celdas al siguiente estado provisional

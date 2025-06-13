@@ -7,12 +7,12 @@ from motor.simulacion import Simulacion  # Importa la clase Simulacion desde el 
 from motor.motor_aleatorio import MotorAleatorio  # Importa la clase MotorAleatorio desde el módulo motor_aleatorio
 
 # Parámetros de la simulación
-TAMANO_GRILLA = 5  # Tamaño de la grilla (NxN)
-BETA = 2.4         # Tasa de transmisión
+TAMANO_GRILLA = 10  # Tamaño de la grilla (NxN)
+BETA = 3       # Tasa de transmisión
 GAMMA = 0.05        # Tasa de recuperación
-MU = 0.01           # Tasa de mortalidad
-PASOS = 50          # Número total de pasos a simular
-SEMILLA = 12345     # semilla fija para reproducibilidad
+MU = 0.1          # Tasa de mortalidad
+PASOS = 10        # Número total de pasos a simular
+SEMILLA = 23456     # semilla fija para reproducibilidad
 
 # Inicializa el motor aleatorio con una semilla fija
 motor_aleatorio = MotorAleatorio(SEMILLA)
@@ -26,11 +26,11 @@ simulacion.ejecutar(mostrar=True)
 # Mostrar resumen final
 
 resumen = simulacion.obtener_estadisticas()
-print("\nResumen de la epidemia:")
-print("Pico de infectados:", resumen["pico_infectados"])
-print("Paso del pico:", resumen["paso_pico"])
-print("Duración:", resumen["duracion"])
-print("Infectados acumulados:", resumen["total_infectados_acumulado"])
+print("\nResumen de la epidemia:", flush=True)
+print("Pico de infectados:", resumen["pico_infectados"], flush=True)
+print("Paso del pico:", resumen["paso_pico"], flush=True)
+print("Duración:", resumen["duracion"], flush=True)
+print("Infectados acumulados:", resumen["total_infectados_acumulado"], flush=True)
 
 # Exportar el historial (opcional)
 historial = simulacion.obtener_historial()
@@ -42,4 +42,4 @@ with open("historial_simulacion.csv", "w") as archivo:
         linea = f"{entrada['paso']},{entrada['S']},{entrada['I']},{entrada['R']},{entrada['F']}\n"
         archivo.write(linea) # Escribe la línea en el archivo
 
-print("Historial guardado en 'historial_simulacion.csv'")  # Mensaje de confirmación
+print("Historial guardado en 'historial_simulacion.csv'", flush=True)  # Mensaje de confirmación

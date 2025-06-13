@@ -94,5 +94,5 @@ class Grilla:
     def mostrar_consola(self):
         for fila in self.celdas:  # Recorre cada fila de la grilla
             linea = " ".join(celda.simbolo() for celda in fila) # Crea una línea con los símbolos de cada celda en la fila
-            print(linea)  # Imprime el símbolo de cada celda en la fila
-        print("-")  
+            print(linea, flush=True)  # Imprime el símbolo de cada celda en la fila
+        print("-", flush=True)
