@@ -8,10 +8,10 @@ from motor.motor_aleatorio import MotorAleatorio  # Importa la clase MotorAleato
 
 # Parámetros de la simulación
 TAMANO_GRILLA = 5  # Tamaño de la grilla (NxN)
-BETA = 2.4         # Tasa de transmisión
-GAMMA = 0.05        # Tasa de recuperación
-MU = 0.01           # Tasa de mortalidad
-PASOS = 50          # Número total de pasos a simular
+BETA = 2.0         # Tasa de transmisión
+GAMMA = 1.0        # Tasa de recuperación
+MU = 0.9           # Tasa de mortalidad
+PASOS = 30          # Número total de pasos a simular
 SEMILLA = 12345     # semilla fija para reproducibilidad
 
 # Inicializa el motor aleatorio con una semilla fija
