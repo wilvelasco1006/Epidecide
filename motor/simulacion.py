@@ -11,7 +11,8 @@ class Simulacion:
     def __init__(self, tamano, beta, gamma, mu, pasos_totales, motor_aleatorio):
         self.pasos_totales = pasos_totales  # Número total de pasos a simular
         self.grilla = Grilla(tamano, beta, gamma, mu, motor_aleatorio)
-        self.grilla.infectar_central()
+        #self.grilla.infectar_central()
+        self.grilla.infectar_aleatorio()
         self.recolector = RecolectorEstadisticas()  # Inicializa el recolector de estadísticas
 
     # Funcion que ejcuta la simuación por el numero total de pasos

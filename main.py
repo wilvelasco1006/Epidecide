@@ -11,7 +11,7 @@ TAMANO_GRILLA = 10  # Tamaño de la grilla (NxN)
 BETA = 0.5       # Tasa de transmisión 0 -1
 GAMMA = 0.5       # Tasa de recuperación 0 - 1
 MU = 0.2            # Tasa de mortalidad 0.1 - 1
-PASOS = 4       # Número total de pasos a simular 0 - 1
+PASOS = 11       # Número total de pasos a simular 0 - 1
 # Inicializa el motor aleatorio con una semilla fija
 motor_aleatorio = MotorAleatorio(id(object()))
 

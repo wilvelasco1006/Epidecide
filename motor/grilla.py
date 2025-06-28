@@ -20,6 +20,13 @@ class Grilla:
         centro = self.tamano // 2
         self.celdas[centro][centro].estado = EstadoCelda.INFECTADO  # Infecta la celda central
 
+    # Funcion que infecta una celda aleatoria de la grilla.
+    def infectar_aleatorio(self):
+        x_aleatorio = int(self.rng.aleatorio() * self.tamano)
+        y_aleatorio = int(self.rng.aleatorio() * self.tamano)
+        self.celdas[x_aleatorio][y_aleatorio].estado = EstadoCelda.INFECTADO
+
+
     # Funcion que retorna una lista con los vecinos validos (moore)
     # Representa la funcion de vecinos Moore, que incluye todos los vecinos adyacentes (8 direcciones).
     def vecinos_moore(self, x, y):
