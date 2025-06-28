@@ -1,6 +1,5 @@
 #include <windows.h>
-#include <string>
-#include <cstdio>
+
 
 // IDs para los botones
 #define ID_BTN_INICIAR 1
@@ -23,10 +22,13 @@ std::wstring ConvertNewlines(const std::string& input) {
 }
 
 // Ventana de resultados
-LRESULT CALLBACK ResultadoProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+LRESULT CALLBACK ResultadoProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
     static HWND hwndTexto;
+    static HWND hwndCerrar;
 
-    switch (uMsg) {
+    switch (uMsg)
+    {
     case WM_CREATE:
         hwndTexto = CreateWindowExW(
             WS_EX_CLIENTEDGE, L"EDIT", L"",
@@ -34,7 +36,7 @@ LRESULT CALLBACK ResultadoProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPara
             10, 10, 560, 310,
             hwnd, (HMENU)1001, GetModuleHandleW(NULL), NULL);
 
-        CreateWindowW(
+        hwndCerrar = CreateWindowW(
             L"BUTTON", L"Cerrar",
             WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
             250, 330, 100, 25,
@@ -42,20 +44,40 @@ LRESULT CALLBACK ResultadoProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPara
         break;
 
     case WM_COMMAND:
-        if (LOWORD(wParam) == 1002) {
+        if (LOWORD(wParam) == 1002)
+        {
             DestroyWindow(hwnd);
         }
         break;
+
+    case WM_SIZE:
+    {
+        int ancho = LOWORD(lParam);
+        int alto = HIWORD(lParam);
+
+        // Redimensiona el área de texto (dejando 20px de margen)
+        MoveWindow(hwndTexto, 10, 10, ancho - 20, alto - 60, TRUE);
+
+        // Reposiciona el botón "Cerrar" centrado horizontalmente y abajo
+        int btnAncho = 100;
+        int btnAlto = 25;
+        int btnX = (ancho - btnAncho) / 2;
+        int btnY = alto - btnAlto - 10;
+
+        MoveWindow(hwndCerrar, btnX, btnY, btnAncho, btnAlto, TRUE);
+        break;
+    }
     }
 
     return DefWindowProcW(hwnd, uMsg, wParam, lParam);
 }
 
+
 // Función principal
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR, int nCmdShow) {
     const wchar_t CLASS_NAME[] = L"EpidecideMenu";
 
-    HICON hIcon = (HICON)LoadImageW(NULL, L"icono.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE | LR_DEFAULTSIZE);
+    HICON hIcon = (HICON)LoadImageW(NULL, L"C:\\Users\\NINIT\\Desktop\\EpiDecide\\icono.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE | LR_DEFAULTSIZE);
 
     // Clase principal
     WNDCLASSW wc = {};

@@ -8,14 +8,12 @@ from motor.motor_aleatorio import MotorAleatorio  # Importa la clase MotorAleato
 
 # Parámetros de la simulación
 TAMANO_GRILLA = 10  # Tamaño de la grilla (NxN)
-BETA = 3       # Tasa de transmisión
-GAMMA = 0.05        # Tasa de recuperación
-MU = 0.1          # Tasa de mortalidad
-PASOS = 10        # Número total de pasos a simular
-SEMILLA = 23456     # semilla fija para reproducibilidad
-
+BETA = 0.5       # Tasa de transmisión 0 -1
+GAMMA = 0.5       # Tasa de recuperación 0 - 1
+MU = 0.2            # Tasa de mortalidad 0.1 - 1
+PASOS = 4       # Número total de pasos a simular 0 - 1
 # Inicializa el motor aleatorio con una semilla fija
-motor_aleatorio = MotorAleatorio(SEMILLA)
+motor_aleatorio = MotorAleatorio(id(object()))
 
 # Crear la simulación
 simulacion = Simulacion(TAMANO_GRILLA, BETA, GAMMA, MU, PASOS, motor_aleatorio)
@@ -26,7 +24,7 @@ simulacion.ejecutar(mostrar=True)
 # Mostrar resumen final
 
 resumen = simulacion.obtener_estadisticas()
-print("\nResumen de la epidemia:", flush=True)
+print("\nResumen de la epidemia:" , flush=True)
 print("Pico de infectados:", resumen["pico_infectados"], flush=True)
 print("Paso del pico:", resumen["paso_pico"], flush=True)
 print("Duración:", resumen["duracion"], flush=True)
