@@ -13,13 +13,13 @@ class EstadoCelda:
     def a_texto(valor):
         # Convierte el valor entero en una cadena legible para mostrar por consola o exportar.
         if valor == EstadoCelda.SUSCEPTIBLE:
-            return "\U0001F535" # Susceptible
+            return "\033["+"7;30;42"+"m "+"\U0001F535" + " \033[0m" # Susceptible
         elif valor == EstadoCelda.INFECTADO:
-            return "\U0001F7E2" # Infectado
+            return "\033["+"7;30;42"+"m "+"\U0001F7E2" + " \033[0m" # Infectado
         elif valor == EstadoCelda.RECUPERADO:
-            return "\U000026AA" # Recuperado
+            return "\033["+"7;30;42"+"m "+"\U000026AA" + " \033[0m" # Recuperado
         elif valor == EstadoCelda.FALLECIDO:
-            return "\U000026AB" # Fallecido
+            return "\033["+"7;30;42"+"m "+"\U0001F480" + " \033[0m" # Fallecido
         else:
             return "?" # Estado desconocido
         

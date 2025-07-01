@@ -100,6 +100,6 @@ class Grilla:
     # Funcion que imprime la grilla actual usanod el simbolo de cada celda.
     def mostrar_consola(self):
         for fila in self.celdas:  # Recorre cada fila de la grilla
-            linea = " ".join(celda.simbolo() for celda in fila) # Crea una línea con los símbolos de cada celda en la fila
+            linea = "\033["+"7;30;42"+"m" + "\033[0m".join(celda.simbolo() for celda in fila) # Crea una línea con los símbolos de cada celda en la fila
             print(linea, flush=True,)  # Imprime el símbolo de cada celda en la fila
-        print("-", flush=True)
+        print(" ", flush=True)
